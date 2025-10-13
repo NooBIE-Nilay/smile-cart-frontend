@@ -1,7 +1,7 @@
 import { NoData } from "neetoui";
 
 const PageNotFound = () => (
-  <div className="absolute left-1/3 top-1/3">
+  <div className="flex h-screen items-center justify-center ">
     <NoData
       title="The page you're looking for can't be found"
       primaryButtonProps={{
