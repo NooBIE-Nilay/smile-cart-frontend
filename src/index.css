@@ -1,2 +1,8 @@
+/* NeetoUI Imports */
 @import "@bigbinary/neetoui";
 @import "react-toastify/dist/ReactToastify.min.css";
+
+/* Tailwind Imports */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
