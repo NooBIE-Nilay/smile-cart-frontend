@@ -34,14 +34,14 @@ const Carousel = ({ imageUrls, title }) => {
           onClick={handleNext}
         />
       </div>
-      <div className="flex flex-col items-center">
+      <div className="mt-2 flex flex-col items-center ">
         <div className="flex space-x-1">
           {imageUrls.map((_, index) => (
             <span
               key={index}
               className={classNames(
                 "neeto-ui-border-black neeto-ui-rounded-full h-3 w-3 cursor-pointer border",
-                { "neeto-ui-border-black": index === currentIndex }
+                { "neeto-ui-bg-black": index === currentIndex }
               )}
               onClick={() => setCurrentIndex(index)}
             />
