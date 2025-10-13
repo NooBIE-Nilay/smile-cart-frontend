@@ -5845,6 +5845,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"classnames@npm:2.3.1":
+  version: 2.3.1
+  resolution: "classnames@npm:2.3.1"
+  checksum: 10c0/e3b832219042802464e648c41c2e8be96c2c64d2522cfa22fbb5ec088418406c61ab351a682c077c07f691c8b00c9f0ee7939b20fabc6c23da69063252a4ab89
+  languageName: node
+  linkType: hard
+
 "classnames@npm:2.x, classnames@npm:^2.2.1, classnames@npm:^2.2.3, classnames@npm:^2.2.5, classnames@npm:^2.2.6, classnames@npm:^2.3.1, classnames@npm:^2.3.2":
   version: 2.5.1
   resolution: "classnames@npm:2.5.1"
@@ -14622,6 +14629,7 @@ __metadata:
     browserslist: "npm:^4.18.1"
     camelcase: "npm:^6.2.1"
     case-sensitive-paths-webpack-plugin: "npm:^2.4.0"
+    classnames: "npm:2.3.1"
     css-loader: "npm:^6.5.1"
     css-minimizer-webpack-plugin: "npm:^3.2.0"
     dotenv: "npm:^10.0.0"
