@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-import productsApi from "apis/product";
 import { Header, PageLoader } from "components/commons";
+import { useFetchProducts } from "hooks/reactQuery/useProductsApi";
 import useDebounce from "hooks/useDebounce";
 import { Search } from "neetoicons";
 import { Input, NoData } from "neetoui";
@@ -11,10 +11,12 @@ import ProductListItem from "./ProductListItem";
 
 const ProductList = () => {
   const [cartItems, setCartItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [products, setProducts] = useState([]);
   const [searchKey, setSearchKey] = useState("");
   const debouncedSearchKey = useDebounce(searchKey);
+
+  const { data: { products = [] } = {}, isLoading } = useFetchProducts({
+    searchTerm: debouncedSearchKey,
+  });
 
   const toggleIsInCart = slug =>
     setCartItems(prevCartItems =>
@@ -22,23 +24,6 @@ const ProductList = () => {
         ? without([slug], cartItems)
         : [slug, ...cartItems]
     );
-
-  const fetchProducts = async () => {
-    try {
-      const { products } = await productsApi.fetch({
-        searchTerm: debouncedSearchKey,
-      });
-      setProducts(products);
-    } catch (error) {
-      console.log("An error occurred:", error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchProducts();
-  }, [debouncedSearchKey]);
 
   if (isLoading) {
     return <PageLoader />;

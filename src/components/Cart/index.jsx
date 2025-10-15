@@ -2,8 +2,8 @@ import { MRP, OFFER_PRICE } from "constants";
 
 import { useEffect, useState } from "react";
 
-import productsApi from "apis/product";
-import { PageLoader, Header, ProductCard } from "components/commons";
+import productsApi from "apis/products";
+import { PageLoader, Header } from "components/commons";
 import { cartTotalOf } from "components/utils";
 import i18n from "i18next";
 import { NoData, Toastr } from "neetoui";
@@ -12,6 +12,7 @@ import useCartItemsStore from "stores/useCartItemsStore";
 import withTitle from "utils/withTitle";
 
 import PriceCard from "./PriceCard";
+import ProductCard from "./ProductCard";
 
 const Cart = () => {
   const [products, setProducts] = useState([]);
