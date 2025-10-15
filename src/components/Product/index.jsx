@@ -10,6 +10,7 @@ import {
 import useSelectedQuantity from "hooks/useSelectedQuantity";
 import { Button, Typography } from "neetoui";
 import { append, isNotNil } from "ramda";
+import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import routes from "routes";
 
@@ -44,6 +45,8 @@ const Product = () => {
   } = product;
   const totalDiscount = mrp - offerPrice;
   const discountPercentage = ((totalDiscount / mrp) * 100).toFixed(1);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     fetchProduct();
@@ -84,7 +87,7 @@ const Product = () => {
             <AddToCart {...{ availableQuantity, slug }} />
             <Button
               className="bg-neutral-800 hover:bg-neutral-950"
-              label="Buy now"
+              label={t("buyNow")}
               size="large"
               to={routes.checkout}
               onClick={() => setSelectedQuantity(selectedQuantity || 1)}
