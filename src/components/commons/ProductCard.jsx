@@ -3,7 +3,6 @@ import { useState } from "react";
 import ProductQuantity from "components/commons/ProductQuantity";
 import { Delete } from "neetoicons";
 import { Alert, Typography } from "neetoui";
-import { prop } from "ramda";
 import useCartItemsStore from "stores/useCartItemsStore";
 
 const ProductCard = ({
@@ -14,7 +13,7 @@ const ProductCard = ({
   name,
   availableQuantity,
 }) => {
-  const removeCartItem = useCartItemsStore(prop("removeCartItem"));
+  const removeCartItem = useCartItemsStore.pickFrom();
   const [shouldShowDeleteAlert, setShouldShowDeleteAlert] = useState(false);
 
   return (
@@ -28,7 +27,6 @@ const ProductCard = ({
           <Typography style="body2">MRP: ${mrp}</Typography>
           <Typography style="body2">Offer price: ${offerPrice}</Typography>
         </div>
-        <ProductQuantity {...{ availableQuantity, slug }} />
         <div className="flex items-center space-x-2">
           <ProductQuantity {...{ availableQuantity, slug }} />
           <Delete

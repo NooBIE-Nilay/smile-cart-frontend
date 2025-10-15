@@ -2752,6 +2752,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@bigbinary/babel-preset-neeto@npm:1.0.6":
+  version: 1.0.6
+  resolution: "@bigbinary/babel-preset-neeto@npm:1.0.6"
+  dependencies:
+    "@bigbinary/neeto-commons-frontend": "npm:^2.0.63"
+    ramda: "npm:^0.29.0"
+  checksum: 10c0/8a3fd5cec3686b798eb4e95c11a837626f72582174aae03d2e10226b8bd1b506122649117f11760294e406f9976be7381f14614b8348527f54a6b407c86c293b
+  languageName: node
+  linkType: hard
+
 "@bigbinary/neeto-cist@npm:1.0.6":
   version: 1.0.6
   resolution: "@bigbinary/neeto-cist@npm:1.0.6"
@@ -2762,6 +2772,45 @@ __metadata:
     dead-code-eliminator: configs/scripts/dead-code-eliminator/index.js
     remove-unused-translation-keys: configs/scripts/remove-unused-translation-keys/index.js
   checksum: 10c0/f4cfd23c611501e8ea7b3f3eb3f2897f722b5989db5851d354e368784993fdfc620c3ba315ad68046a73905e906fb9ef1e84bd6ef7049597549edf5b4f89b6d8
+  languageName: node
+  linkType: hard
+
+"@bigbinary/neeto-commons-frontend@npm:^2.0.63":
+  version: 2.1.39
+  resolution: "@bigbinary/neeto-commons-frontend@npm:2.1.39"
+  peerDependencies:
+    "@bigbinary/babel-preset-neeto": ^1.0.3
+    "@bigbinary/neeto-commons-frontend": "*"
+    "@bigbinary/neeto-icons": "*"
+    "@bigbinary/neeto-molecules": "*"
+    "@bigbinary/neetoui": "*"
+    "@faker-js/faker": ^8.2.0
+    "@honeybadger-io/js": ^6.4.1
+    "@honeybadger-io/react": ^6.1.3
+    antd: 4.18.7
+    autoprefixer: ^10.4.13
+    axios: ^0.27.2
+    cypress: 11.2.0
+    dayjs: 1.11.1
+    dotenv-webpack: ^8.0.1
+    formik: ^2.2.9
+    i18next: ^22.5.1
+    js-logger: ^1.6.1
+    ramda: ^0.29.0
+    react: 18.2.0
+    react-helmet: ^6.1.0
+    react-i18next: ^12.3.1
+    react-query: ^3.39.2
+    react-router-dom: 5.3.3
+    react-toastify: 8.0.2
+    shakapacker: ^6.5.5
+    tailwindcss: "*"
+    webpack: ^5.75.0
+    yup: ^0.32.11
+  bin:
+    dead-code-eliminator: configs/scripts/dead-code-eliminator/index.js
+    remove-unused-translation-keys: configs/scripts/remove-unused-translation-keys/index.js
+  checksum: 10c0/8b181269793d3572d88d806ff955e3db102c501be252b877f3f5b087c3f77d11a718f3f3602354522a134e4a463aa59b39e590c601c53e3dcedb2ec7587e0140
   languageName: node
   linkType: hard
 
@@ -13186,7 +13235,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ramda@npm:^0.29.1":
+"ramda@npm:^0.29.0, ramda@npm:^0.29.1":
   version: 0.29.1
   resolution: "ramda@npm:0.29.1"
   checksum: 10c0/5de53a07400959c1a704c366ec52b1b8cd9a444dc1f9cdf17d607e0b9eeaa38cbaea309d43e59dbd7f36731ba977a64d40092555c0e7c2d4a41e8e922239c0ba
@@ -14808,6 +14857,7 @@ __metadata:
     "@babel/core": "npm:^7.16.0"
     "@babel/eslint-parser": "npm:^7.22.9"
     "@babel/plugin-proposal-private-property-in-object": "npm:^7.21.11"
+    "@bigbinary/babel-preset-neeto": "npm:1.0.6"
     "@bigbinary/neeto-cist": "npm:1.0.6"
     "@bigbinary/neeto-icons": "npm:1.17.6"
     "@bigbinary/neetoui": "npm:5.2.41"
