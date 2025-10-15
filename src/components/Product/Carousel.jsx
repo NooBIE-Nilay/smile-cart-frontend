@@ -8,33 +8,33 @@ import { append } from "ramda";
 import { useParams } from "react-router-dom";
 
 const Carousel = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
   const { slug } = useParams();
+
   const timerRef = useRef(null);
 
   const { data: { imageUrl, imageUrls: partialImageUrls, title } = {} } =
     useShowProduct(slug);
+
   const imageUrls = append(imageUrl, partialImageUrls);
-
-  const intervalDuration = 3000;
-
-  useEffect(() => {
-    timerRef.current = setInterval(handleNext, intervalDuration);
-
-    return () => clearInterval(timerRef.current);
-  }, [intervalDuration]);
 
   const resetTimer = () => {
     clearInterval(timerRef.current);
-    timerRef.current = setInterval(handleNext, intervalDuration);
+    timerRef.current = setInterval(handleNext, 3000);
   };
-
-  const [currentIndex, setCurrentIndex] = useState(0);
 
   const handlePrev = () =>
     setCurrentIndex(index => (index - 1 + imageUrls.length) % imageUrls.length);
 
   const handleNext = () =>
     setCurrentIndex(index => (index + 1) % imageUrls.length);
+
+  useEffect(() => {
+    timerRef.current = setInterval(handleNext, 3000);
+
+    return () => clearInterval(timerRef.current);
+  }, []);
 
   return (
     <div className="flex flex-col items-center">

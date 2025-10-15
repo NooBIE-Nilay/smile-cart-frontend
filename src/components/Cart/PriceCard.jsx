@@ -6,13 +6,13 @@ import routes from "routes";
 import useCartItemsStore from "stores/useCartItemsStore";
 
 const PriceCard = ({ totalMrp, totalOfferPrice }) => {
+  const { t } = useTranslation();
+
   const totalDiscounts = totalMrp - totalOfferPrice;
   const isDiscountPresent = gt(totalDiscounts, 0);
   const discountPercentage = ((totalDiscounts / totalMrp) * 100).toFixed(1);
 
   const itemsCount = useCartItemsStore(store => keys(store.cartItems).length);
-
-  const { t } = useTranslation();
 
   return (
     <div className="neeto-ui-rounded neeto-ui-border-black space-y-2 border p-3">
@@ -39,7 +39,7 @@ const PriceCard = ({ totalMrp, totalOfferPrice }) => {
           <Typography className="flex justify-between">
             <Trans
               components={{ span: <span /> }}
-              i18nKey="offerPrice"
+              i18nKey="totalOfferPrice"
               values={{ offerPrice: totalOfferPrice }}
             />
           </Typography>
