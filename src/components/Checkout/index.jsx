@@ -1,11 +1,18 @@
+import { useRef, useState } from "react";
+
 import { PageLoader } from "components/commons";
-import { useFetchCountries } from "hooks/reactQuery/useCheckoutApi";
+import {
+  useCreateOrder,
+  useFetchCountries,
+} from "hooks/reactQuery/useCheckoutApi";
 import i18n from "i18next";
 import { LeftArrow } from "neetoicons";
-import { Typography } from "neetoui";
+import { Button, Typography } from "neetoui";
 import { Form as NeetoUIForm } from "neetoui/formik";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
+import routes from "routes";
+import useCartItemsStore from "stores/useCartItemsStore";
 import withTitle from "utils/withTitle";
 
 import {
@@ -15,14 +22,48 @@ import {
 import Form from "./Form";
 
 const Checkout = () => {
-  const { t } = useTranslation();
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
 
   const history = useHistory();
 
+  const timerRef = useRef(null);
+
+  const clearCart = useCartItemsStore.pickFrom();
+
+  const { mutate: createOrder } = useCreateOrder();
+
+  const { t } = useTranslation();
+
   const { isLoading } = useFetchCountries();
 
+  const redirectToHome = () => {
+    timerRef.current = setTimeout(() => {
+      history.push(routes.root);
+      clearCart();
+    }, 1500);
+  };
+
   const handleRedirect = () => {
-    history.goBack();
+    if (timerRef.current) {
+      history.push(routes.root);
+      clearCart();
+      clearTimeout(timerRef.current);
+    } else {
+      history.goBack();
+    }
+  };
+
+  const handleSubmit = values => {
+    setIsSubmitDisabled(true);
+    createOrder(
+      { payload: values },
+      {
+        onError: () => setIsSubmitDisabled(false),
+        onSuccess: () => {
+          redirectToHome();
+        },
+      }
+    );
   };
 
   if (isLoading) return <PageLoader />;
@@ -33,6 +74,7 @@ const Checkout = () => {
       formikProps={{
         initialValues: CHECKOUT_FORM_INITIAL_VALUES,
         validateSchema: CHECKOUT_FORM_VALIDATION_SCHEMA,
+        onSubmit: handleSubmit,
       }}
     >
       <div className="flex space-x-4">
@@ -58,6 +100,12 @@ const Checkout = () => {
         </div>
         <div className="neeto-ui-bg-gray-300 h-screen w-1/2 pt-10">
           <span>Items</span>
+          <Button
+            className="bg-neutral-800 w-1/3 justify-center"
+            disabled={isSubmitDisabled}
+            label={t("confirmOrder")}
+            type="submit"
+          />
         </div>
       </div>
     </NeetoUIForm>
