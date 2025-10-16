@@ -8,7 +8,10 @@ import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 import withTitle from "utils/withTitle";
 
-import { CHECKOUT_FORM_INITIAL_VALUES } from "./constants";
+import {
+  CHECKOUT_FORM_INITIAL_VALUES,
+  CHECKOUT_FORM_VALIDATION_SCHEMA,
+} from "./constants";
 import Form from "./Form";
 
 const Checkout = () => {
@@ -27,7 +30,10 @@ const Checkout = () => {
   return (
     <NeetoUIForm
       formProps={{ noValidate: true }}
-      formikProps={{ initialValues: CHECKOUT_FORM_INITIAL_VALUES }}
+      formikProps={{
+        initialValues: CHECKOUT_FORM_INITIAL_VALUES,
+        validateSchema: CHECKOUT_FORM_VALIDATION_SCHEMA,
+      }}
     >
       <div className="flex space-x-4">
         <div className="m-10 w-1/2">
